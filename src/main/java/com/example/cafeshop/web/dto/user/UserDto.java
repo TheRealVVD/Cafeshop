@@ -18,7 +18,7 @@ public class UserDto {
     private String name;
 
     @NotNull(message = "Login must be not null", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Name length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
+    @Length(max = 255, message = "Login length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
     private String login;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
