@@ -19,7 +19,7 @@ public class DishDto {
     private String title;
 
     @NotNull(message = "Description must be not null", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 1023, message = "Name length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
+    @Length(max = 1023, message = "Description length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
     private String description;
 
     @NotNull(message = "Price must be not null", groups = {OnCreate.class, OnUpdate.class})
