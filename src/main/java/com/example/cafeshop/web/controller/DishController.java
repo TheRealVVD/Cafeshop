@@ -30,7 +30,7 @@ public class DishController {
             return dishDtos;
       }
 
-      @GetMapping("{id}")
+      @GetMapping("/{id}")
       public DishDto getById(@PathVariable Long id) {
             Dish dish = dishService.getById(id);
 
