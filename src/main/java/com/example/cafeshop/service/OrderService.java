@@ -10,9 +10,11 @@ public interface OrderService {
 
     List<Order> getAllByUserId(Long userId);
 
+    List<Order> getAllOrders();
+
     Order update(Order order);
 
-    Order create(Order order);
+    Order create(Order order, Long userId);
 
     void delete(Long orderId);
 

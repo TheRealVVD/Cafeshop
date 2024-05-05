@@ -28,6 +28,6 @@ public class DishDto {
     @NotNull(message = "Weight must be not null", groups = {OnCreate.class, OnUpdate.class})
     private Double weight;
 
-    private Set<String> images;
+//    private Set<String> images;
 
 }

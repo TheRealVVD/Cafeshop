@@ -7,10 +7,9 @@ services:
     ports:
       - '8080:8080'
     depends_on:
-      - postgres_db
+      - postgres_cafeshop
 
-
-  postgres_db:
+  postgres_cafeshop:
     image: postgres:15.1-alpine
     restart: always
     ports:

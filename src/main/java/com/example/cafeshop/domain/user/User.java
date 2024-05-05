@@ -3,6 +3,7 @@ package com.example.cafeshop.domain.user;
 import com.example.cafeshop.domain.order.Order;
 import com.example.cafeshop.web.dto.validation.OnCreate;
 import com.example.cafeshop.web.dto.validation.OnUpdate;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -10,25 +11,34 @@ import org.hibernate.validator.constraints.Length;
 import java.util.List;
 import java.util.Set;
 
+@Entity
+@Table(name = "users")
 @Data
 public class User {
 
-    @NotNull(message = "Id must be not null", groups = OnUpdate.class)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull(message = "Name must be not null", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Name length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
     private String name;
 
-    @NotNull(message = "Login must be not null", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Name length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
+    @Column(name = "login", unique = true)
     private String login;
 
-    @NotNull(message = "Name must be not null", groups = {OnCreate.class, OnUpdate.class})
-    @Length(max = 255, message = "Name length must be smaller than 255 symbols", groups = {OnUpdate.class, OnCreate.class})
     private String password;
+
+    @Transient
     private String passwordConfirmation;
+
+    @ElementCollection
+    @CollectionTable(name = "users_roles")
+    @Column(name = "role")
+    @Enumerated(value = EnumType.STRING)
     private Set<Role> roles;
+
+    @CollectionTable(name = "users_orders")
+    @OneToMany
+    @JoinColumn(name = "order_id")
     private List<Order> orders;
 
 }
