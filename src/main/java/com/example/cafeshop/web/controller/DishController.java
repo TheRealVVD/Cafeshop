@@ -22,24 +22,24 @@ import java.util.List;
 @Tag(name = "Dish Controller", description = "Dish API")
 public class DishController {
 
-      private final DishService dishService;
-      private final DishMapper dishMapper;
+    private final DishService dishService;
+    private final DishMapper dishMapper;
 
-      @GetMapping
-      @Operation(summary = "Get all dishes")
-      public List<DishDto> getAllDishes() {
-            List<Dish> dishes = dishService.getAllDishes();
-            List<DishDto> dishDtos = dishMapper.toDto(dishes);
+    @GetMapping
+    @Operation(summary = "Get all dishes")
+    public List<DishDto> getAllDishes() {
+        List<Dish> dishes = dishService.getAllDishes();
+        List<DishDto> dishDtos = dishMapper.toDto(dishes);
 
-            return dishDtos;
-      }
+        return dishDtos;
+    }
 
-      @GetMapping("/{id}")
-      @Operation(summary = "Get dish by ID")
-      public DishDto getById(@PathVariable Long id) {
-            Dish dish = dishService.getById(id);
+    @GetMapping("/{id}")
+    @Operation(summary = "Get dish by ID")
+    public DishDto getById(@PathVariable Long id) {
+        Dish dish = dishService.getById(id);
 
-            return dishMapper.toDto(dish);
-      }
+        return dishMapper.toDto(dish);
+    }
 
 }
