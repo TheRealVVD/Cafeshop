@@ -1,6 +1,7 @@
 package com.example.cafeshop.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -11,14 +12,5 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    @Bean
-    public OpenAPI openAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Cafe Shop API")
-                        .description("Spring Boot pet project")
-                        .version("1.0")
-                );
-    }
 
 }
