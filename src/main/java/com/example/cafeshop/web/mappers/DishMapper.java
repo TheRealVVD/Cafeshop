@@ -10,8 +10,11 @@ import java.util.List;
 public interface DishMapper {
 
     DishDto toDto(Dish dish);
+
     List<DishDto> toDto(List<Dish> dishes);
+
     Dish toEntity(DishDto dishDto);
+
     List<Dish> toEntity(List<DishDto> dishDtos);
 
 }
