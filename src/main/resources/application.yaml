@@ -1,19 +1,20 @@
 spring:
   application:
     name: cafeshop
+
+
+  config:
+    import: optional:file:.env[.properties]
   datasource:
-    url: jdbc:postgresql://localhost:5454/cafeshop?currentSchema=cafeshop
-    username: cafeshop
-    password: cafecafeshopshop
+    url: jdbc:postgresql://${POSTGRES_HOST}/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
-  sql:
-    init:
-      mode: never
-      continue-on-error: false
-#      data-locations: classpath:liquibase/changesets/V2__insert_data.sql
   liquibase:
     change-log: classpath:liquibase/db.changelog.yaml
     enabled: true
     default-schema: cafeshop
 springdoc:
   override-with-generic-response: false
+server:
+  port: 8090
